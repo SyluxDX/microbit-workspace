@@ -32,34 +32,39 @@ class accelerometer:
     is currently not possible in MicroPython. The accelerometer returns a value in the range 0..1024
     for each axis, which is then scaled accordingly."""
 
-    def get_x(self):
+    @classmethod
+    def get_x(cls):
         """ Get the acceleration measurement in the x axis, as a positive or negative integer,
         depending on the direction. The measurement is given in milli-g. By default the
         accelerometer is configured with a range of +/- 2g, and so this method will return within
         the range of +/- 2000mg."""
         return 1
 
-    def get_y(self):
+    @classmethod
+    def get_y(cls):
         """ Get the acceleration measurement in the y axis, as a positive or negative integer,
         depending on the direction. The measurement is given in milli-g. By default the
         accelerometer is configured with a range of +/- 2g, and so this method will return within
         the range of +/- 2000mg."""
         return 1
 
-    def get_z(self):
+    @classmethod
+    def get_z(cls):
         """ Get the acceleration measurement in the z axis, as a positive or negative integer,
         depending on the direction. The measurement is given in milli-g. By default the
         accelerometer is configured with a range of +/- 2g, and so this method will return within
         the range of +/- 2000mg."""
         return 1
 
-    def get_values(self):
+    @classmethod
+    def get_values(cls):
         """ Get the acceleration measurements in all axes at once, as a three-element tuple of
         integers ordered as X, Y, Z. By default the accelerometer is configured with a range of +/-
         2g, and so X, Y, and Z will be within the range of +/-2000mg. """
         return (1, 1, 1)
 
-    def current_gesture(self):
+    @classmethod
+    def current_gesture(cls):
         """ Return the name of the current gesture. MicroPython understands the following gesture
         names:
 
@@ -68,17 +73,20 @@ class accelerometer:
         Gestures are always represented as strings """
         return 'gesture'
 
-    def is_gesture(self, name):
+    @classmethod
+    def is_gesture(cls, name):
         """ Return True or False to indicate if the named gesture is currently active """
         _ = name
         return False
 
-    def was_gesture(self, name):
+    @classmethod
+    def was_gesture(cls, name):
         """ Return True or False to indicate if the named gesture was currently active """
         _ = name
         return False
 
-    def get_gestures(self):
+    @classmethod
+    def get_gestures(cls):
         """ Return a tuple of the gesture history. The most recent is listed last.
         Also clears the gesture history before returning """
         return ('up', 'up')
@@ -112,40 +120,47 @@ class compass:
     Calibration consists of a little game to draw a circle on the LED display by rotating the
     device """
 
-    def calibrate(self):
+    @classmethod
+    def calibrate(cls):
         """ Starts the calibration process. An instructive message will be scrolled to the user
         after which they will need to rotate the device in order to draw a circle on the LED
         display """
-
-    def is_calibrated(self):
+    @classmethod
+    def is_calibrated(cls):
         """ Returns True if the compass has been successfully calibrated, and returns False
         otherwise """
         return True
 
-    def clear_calibration(self):
+    @classmethod
+    def clear_calibration(cls):
         """ Undoes the calibration, making the compass uncalibrated again """
 
-    def get_x(self):
+    @classmethod
+    def get_x(cls):
         """ Gives the reading of the magnetic field strength on the x axis in nano tesla, as a
         positive or negative integer, depending on the direction of the field """
         return 1
 
-    def get_y(self):
+    @classmethod
+    def get_y(cls):
         """ Gives the reading of the magnetic field strength on the xy axis in nano tesla, as a
         positive or negative integer, depending on the direction of the field """
         return 1
 
-    def get_z(self):
+    @classmethod
+    def get_z(cls):
         """ Gives the reading of the magnetic field strength on the z axis in nano tesla, as a
         positive or negative integer, depending on the direction of the field """
         return 1
 
-    def heading(self):
+    @classmethod
+    def heading(cls):
         """ Gives the compass heading, calculated from the above readings, as an integer in the
         range from 0 to 360, representing the angle in degrees, clockwise, with north as 0 """
         return 1
 
-    def get_field_strength(self):
+    @classmethod
+    def get_field_strength(cls):
         """ Returns an integer indication of the magnitude of the magnetic field around the device
         in nano tesla """
         return 1
@@ -154,24 +169,28 @@ class display:
     """ This module controls the 5×5 LED display on the front of your board. It can be used to
     display images, animations and even text """
 
-    def get_pixel(self, x, y):
+    @classmethod
+    def get_pixel(cls, x, y):
         """ Return the brightness of the LED at column x and row y as an integer between 0 (off) and
         9 (bright) """
         _x = x
         _y = y
         return 1
 
-    def set_pixel(self, x, y, value):
+    @classmethod
+    def set_pixel(cls, x, y, value):
         """ Set the brightness of the LED at column x and row y to value, which has to be an integer
         between 0 and 9 """
         _x = x
         _y = y
         _v = value
 
-    def clear(self):
+    @classmethod
+    def clear(cls):
         """ Set the brightness of all LEDs to 0 (off) """
 
-    def show(self, value, delay=400, *, wait=True, loop=False, clear=False):
+    @classmethod
+    def show(cls, value, delay=400, *, wait=True, loop=False, clear=False):
         """ Display the image
 
         If value is a string, float or integer, display letters/digits in sequence. Otherwise,
@@ -187,7 +206,8 @@ class display:
 
         Note that the wait, loop and clear arguments must be specified using their keyword """
 
-    def scroll(self, value, delay=150, *, wait=True, loop=False, monospace=False):
+    @classmethod
+    def scroll(cls, value, delay=150, *, wait=True, loop=False, monospace=False):
         """ Scrolls value horizontally on the display. If value is an integer or float it is first
         converted to a string using str(). The delay parameter controls how fast the text is
         scrolling.
@@ -202,18 +222,22 @@ class display:
 
         Note that the wait, loop and monospace arguments must be specified using their keyword """
 
-    def on(self):
+    @classmethod
+    def on(cls):
         """ Use to turn on the display """
 
-    def off(self):
+    @classmethod
+    def off(cls):
         """ Use to turn off the display (thus allowing you to re-use the GPIO pins associated with
         the display for other purposes) """
 
-    def is_on(self):
+    @classmethod
+    def is_on(cls):
         """ Returns True if the display is on, otherwise returns False """
         return True
 
-    def read_light_level(self):
+    @classmethod
+    def read_light_level(cls):
         """ Use the display’s LEDs in reverse-bias mode to sense the amount of light falling on the
         display. Returns an integer between 0 and 255 representing the light level, with larger
         meaning more light """
@@ -298,15 +322,16 @@ class i2c:
     How exactly you should communicate with the devices, that is, what bytes to send and how to
     interpret the responses, depends on the device in question and should be described separately in
     that device’s documentation. """
-
-    def init(self, freq=100000, sda=pin20, scl=pin19):
+    @classmethod
+    def init(cls, freq=100000, sda=pin20, scl=pin19):
         """ Re-initialize peripheral with the specified clock frequency freq on the specified sda
         and scl pins.
 
         Warning: Changing the I²C pins from defaults will make the accelerometer and compass stop
         working, as they are connected internally to those pins """
 
-    def read(self, addr, n, repeat=False):
+    @classmethod
+    def read(cls, addr, n, repeat=False):
         """ Read n bytes from the device with 7-bit address addr. If repeat is True, no stop bit
         will be sent """
         _a = addr
@@ -314,7 +339,8 @@ class i2c:
         _r = repeat
         return b'\x00\x01'
 
-    def write(self, addr, buf, repeat=False):
+    @classmethod
+    def write(cls, addr, buf, repeat=False):
         """ Write bytes from buf to the device with 7-bit address addr. If repeat is True, no stop
         bit will be sent """
 
@@ -495,7 +521,8 @@ class spi:
 
     MISO : Master Input, Slave Output (output from slave) """
 
-    def init(self, baudrate=1000000, bits=8, mode=0, sclk=pin13, mosi=pin15, miso=pin14):
+    @classmethod
+    def init(cls, baudrate=1000000, bits=8, mode=0, sclk=pin13, mosi=pin15, miso=pin14):
         """ Initialize SPI communication with the specified parameters on the specified pins. Note
         that for correct communication, the parameters have to be the same on both communicating
         devices.
@@ -522,15 +549,18 @@ class spi:
         goes low (logic value 0) when active. Phase (aka CPHA) 0 means that data is sampled on the
         leading edge of the clock, and 1 means on the trailing edge """
 
-    def read(self, nbytes):
+    @classmethod
+    def read(cls, nbytes):
         """ Read at most nbytes. Returns what was read """
         _ = nbytes
         return b'\x00\x00'
 
-    def write(self, buffer):
+    @classmethod
+    def write(cls, buffer):
         """ Write the buffer of bytes to the bus """
 
-    def write_readinto(self, out_buffer, in_buffer):
+    @classmethod
+    def write_readinto(cls, out_buffer, in_buffer):
         """ Write the out_buffer to the bus and read any response into the in_buffer. The length of
         the buffers should be the same. The buffers can be the same object """
 
@@ -538,7 +568,8 @@ class uart:
     """ The uart module lets you talk to a device connected to your board using a serial
     interface """
 
-    def init(self, baudrate=9600, bits=8, parity=None, stop=1, *, tx=None, rx=None):
+    @classmethod
+    def init(cls, baudrate=9600, bits=8, parity=None, stop=1, *, tx=None, rx=None):
         """ Initialize serial communication with the specified parameters on the specified tx and rx
         pins. Note that for correct communication, the parameters have to be the same on both
         communicating devices.
@@ -567,11 +598,13 @@ class uart:
         needs to be connected with the RX pin on the device, and the RX pin – with the TX pin on the
         device. Also make sure the ground pins of both devices are connected """
 
-    def any(self):
+    @classmethod
+    def any(cls):
         """ Return True if any data is waiting, else False """
         return True
 
-    def read(self, nbytes=None):
+    @classmethod
+    def read(cls, nbytes=None):
         """ Read bytes. If nbytes is specified then read at most that many bytes, otherwise read as
         many bytes as possible. Return value: a bytes object or None on timeout.
 
@@ -586,7 +619,8 @@ class uart:
 
         msg_str = str(msg, 'UTF-8') """
 
-    def readinto(self, buffer, nbytes=None):
+    @classmethod
+    def readinto(cls, buffer, nbytes=None):
         """ Read bytes into the buf. If nbytes is specified then read at most that many bytes.
         Otherwise, read at most len(buf) bytes. Return value: number of bytes read and stored into
         buf or None on timeout """
@@ -594,12 +628,14 @@ class uart:
         _n = nbytes
         return b'\x00\x00'
 
-    def readline(self):
+    @classmethod
+    def readline(cls):
         """ Read a line, ending in a newline character. Return value: the line read or None on
         timeout. The newline character is included in the returned bytes """
         return ''
 
-    def write(self, buf):
+    @classmethod
+    def write(cls, buf):
         """ Write the buffer to the bus, it can be a bytes object or a string:
 
         uart.write('hello world')
